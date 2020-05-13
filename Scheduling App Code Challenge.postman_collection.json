@@ -1,0 +1,169 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Scheduling App Postman",
+		"_postman_id": "63442b4f-d5a2-bbc7-c433-09713b9ff05c",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST api/auth",
+			"request": {
+				"url": "http://localhost:5000/api/auth",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"user@schedulingapp.com\",\n\t\"password\": \"user1234\"\n}"
+				},
+				"description": "POST credentials, gets jwt auth token"
+			},
+			"response": []
+		},
+		{
+			"name": "GET api/users/me",
+			"request": {
+				"url": "http://localhost:5000/api/users/me",
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWQ1ZWIzY2EzN2QyZTk1MTdjMjExMGJkIn0sImlhdCI6MTU2NjU4MzQ4MiwiZXhwIjoxNTY2OTQzNDgyfQ.5Hgvc9LBjAc7RWKFt7Tjn-9VRdezQKOW3T2pBC7bDTM",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Gets the current user information by jwt"
+			},
+			"response": []
+		},
+		{
+			"name": "POST api/users",
+			"request": {
+				"url": "http://localhost:5000/api/users",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"test@test.com\",\n\t\"password\": \"test1234\"\n}"
+				},
+				"description": "Creates a new user with credentials"
+			},
+			"response": []
+		},
+		{
+			"name": "GET api/shifts",
+			"request": {
+				"url": "http://localhost:5000/api/shifts",
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWQ1ZWIzY2EzN2QyZTk1MTdjMjExMGJlIn0sImlhdCI6MTU2NjU3NzczNiwiZXhwIjoxNTY2OTM3NzM2fQ.qG0EA6ImW0zoIjvNsPLyczT5-CLZbJlIer5VMvau48E",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Gets all shifts for the auth user, or all shifts for all users if admin.\n\nValid jwt required in header."
+			},
+			"response": []
+		},
+		{
+			"name": "GET api/shifts/{id}",
+			"request": {
+				"url": "http://localhost:5000/api/shifts/5d5ee32204b1030f44777c01",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWQ1ZWIzY2EzN2QyZTk1MTdjMjExMGJlIn0sImlhdCI6MTU2NjU3NzczNiwiZXhwIjoxNTY2OTM3NzM2fQ.qG0EA6ImW0zoIjvNsPLyczT5-CLZbJlIer5VMvau48E",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"user@schedulingapp.com\",\n\t\"password\": \"user1234\"\n}"
+				},
+				"description": "GET shift by id, requires valid id and jwt."
+			},
+			"response": []
+		},
+		{
+			"name": "GET api/shifts/{from}/{to}",
+			"request": {
+				"url": "http://localhost:5000/api/shifts/2019-08-22 15:00:00/2019-08-22 18:50:00",
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWQ1ZWIzY2EzN2QyZTk1MTdjMjExMGJlIn0sImlhdCI6MTU2NjU3NzczNiwiZXhwIjoxNTY2OTM3NzM2fQ.qG0EA6ImW0zoIjvNsPLyczT5-CLZbJlIer5VMvau48E",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Gets a date range of shifts\n\nRequires valid from/to and a jwt token"
+			},
+			"response": []
+		},
+		{
+			"name": "POST api/shifts",
+			"request": {
+				"url": "http://localhost:5000/api/shifts",
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWQ1ZWIzY2EzN2QyZTk1MTdjMjExMGJlIn0sImlhdCI6MTU2NjU3OTg3MywiZXhwIjoxNTY2OTM5ODczfQ.bvat4H6pQILcg3oWQGr9syu3hx-_fw1warKF_vBt-KY",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"to\": \"2019-08-23 12:00:00Z\",\n\t\"from\": \"2019-08-23 18:00:00Z\"\n}"
+				},
+				"description": "Creates and updates the shift, double checks to validate it does not overlap an existing shift"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE api/shifts/{id}",
+			"request": {
+				"url": "http://localhost:5000/api/shifts/5d5ee32204b1030f44777c01",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWQ1ZWIzY2EzN2QyZTk1MTdjMjExMGJlIn0sImlhdCI6MTU2NjU3NzczNiwiZXhwIjoxNTY2OTM3NzM2fQ.qG0EA6ImW0zoIjvNsPLyczT5-CLZbJlIer5VMvau48E",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Deletes a shift by id\n\nValid id and jwt token required"
+			},
+			"response": []
+		}
+	]
+}

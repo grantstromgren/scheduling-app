@@ -1,0 +1,36 @@
+{
+  "name": "scheduling-app-back",
+  "version": "1.0.0",
+  "description": "Back end for Scheduling App",
+  "main": "index.js",
+  "scripts": {
+    "seed": "node seedDatabase",
+    "server": "NODE_PATH=./ nodemon server",
+    "client": "NODE_PATH=./client/src npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "Grant Stromgren",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "config": "^3.1.0",
+    "express": "^4.16.4",
+    "express-validator": "^5.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.24.0",
+    "mongoose": "^5.5.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "prop-types": "^15.7.2",
+    "request": "^2.88.0",
+    "validator": "^10.11.0"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.2",
+    "nodemon": "^1.18.11",
+    "prettier": "^1.18.2",
+    "progress": "^2.0.3"
+  }
+}
